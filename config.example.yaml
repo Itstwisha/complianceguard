@@ -1,0 +1,62 @@
+# ComplianceGuard Configuration
+
+# System information
+system:
+  name: "My System"
+  environment: "development"  # development, staging, production
+
+# Scanning configuration
+scanning:
+  # Which frameworks to check against
+  frameworks:
+    - cis_macos
+  
+  # Categories to scan (leave empty to scan all)
+  categories: []
+    # - authentication
+    # - access_control
+    # - logging
+    # - network
+  
+  # Severity levels to include
+  severity_levels:
+    - CRITICAL
+    - HIGH
+    - MEDIUM
+    - LOW
+
+# Reporting configuration
+reporting:
+  # Report formats to generate
+  formats:
+    - html
+    - json
+  
+  # Output directory
+  output_dir: "reports"
+  
+  # Report filename pattern
+  filename_pattern: "compliance_report_{timestamp}"
+  
+  # Include remediation steps in report
+  include_remediation: true
+  
+  # Show passing checks (or only failures)
+  show_passed: true
+
+# Scoring configuration
+scoring:
+  # Minimum passing score (percentage)
+  passing_threshold: 80
+  
+  # Weight by severity
+  severity_weights:
+    CRITICAL: 4
+    HIGH: 3
+    MEDIUM: 2
+    LOW: 1
+
+# Logging
+logging:
+  level: INFO  # DEBUG, INFO, WARNING, ERROR
+  file: "complianceguard.log"
